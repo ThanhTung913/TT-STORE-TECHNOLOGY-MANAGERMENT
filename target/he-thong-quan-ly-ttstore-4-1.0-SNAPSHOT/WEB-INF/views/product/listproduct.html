@@ -87,19 +87,29 @@
                     </button>
 
 
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item" href="contacts-profile.html"><i
-                                class="bx bx-user font-size-16 align-middle mr-1"></i> Profile</a>
+                    <div class="dropdown-menu dropdown-menu-right profile-dropdown">
+                        <div class="dropdown-header">
+                            <h6 class="text-overflow m-0">Welcome <span th:text="${username}" style="color: #ff9900"></span> !</h6>
+                        </div>
 
-                        <a href="javascript:void(0);" class="dropdown-item d-block" href="#"><span
-                                class="badge badge-success float-right">11</span><i
-                                class="bx bx-wrench font-size-16 align-middle mr-1"></i> Settings</a>
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <i class="fa fa-user"></i>
+                            <span>Profile</span>
+                        </a>
+
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <i class="fa fa-cog"></i>
+                            <span>Settings</span>
+                        </a>
 
                         <div class="dropdown-divider"></div>
-                        <a href="/logout" class="dropdown-item text-danger" href="#"><i
-                                class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i> Logout</a>
+
+                        <a href="/logout" class="dropdown-item notify-item logout">
+                            <i class="fa fa-sign-out"></i>
+                            <span>Logout</span>
+                        </a>
                     </div>
+
                 </div>
 
 

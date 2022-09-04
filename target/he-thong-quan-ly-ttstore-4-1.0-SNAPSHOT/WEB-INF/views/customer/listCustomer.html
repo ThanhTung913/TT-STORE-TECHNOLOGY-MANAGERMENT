@@ -196,6 +196,11 @@
 <th:block th:insert="/customer/modal_update :: modal_update"/>
 
 <script>
+
+    page.elements.logout = $(".profile-dropdown a.logout");
+    page.elements.logout.on("click", function () {
+        $.removeCookie('JWT', {path: '/', domain: location.hostname});
+    });
     let page = {
         urls: {
             getAllCustomer: App.BASE_URL_CUSTOMER,
@@ -206,7 +211,13 @@
         },
         element: {},
         commands: {},
+
+
     }
+    page.elements.logout = $(".profile-dropdown a.logout");
+    page.elements.logout.on("click", function () {
+        $.removeCookie('JWT', {path: '/', domain: location.hostname});
+    });
 
     let customer = new Customer();
     let customerId = null;
