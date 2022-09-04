@@ -5,7 +5,7 @@
       <title>CodePen - Slide Sign In/Sign Up form</title>
       <th:block th:replace="/layout/head :: head"/>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-      <link rel="stylesheet" href="/assets/login/css/login.css">
+      <link rel="stylesheet" href="/assets/css/login.css">
     </head>
 <body>
   <!-- partial:index.partial.html -->
@@ -53,7 +53,7 @@
       </div>
     </div>
 <!-- partial -->
-  <script src="/assets/login/js/app/app.js"></script>
+  <script src="/assets/js/app.model.js"></script>
   <th:block th:replace="/layout/script :: script"/>
 
 
@@ -125,7 +125,7 @@
               .done(() => {
                 App.SweetAlert.showSuccessAlert('Đăng nhập thành công');
                 setTimeout(() => {
-                  location.href = "/products";
+                  location.href = "/customers";
                 }, 2000);
 
               })
