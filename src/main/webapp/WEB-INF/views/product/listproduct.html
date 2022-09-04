@@ -1,0 +1,573 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+
+<th:block th:replace="/layout/head :: head-product"/>
+
+<body data-sidebar="dark">
+
+<!-- Begin page -->
+<div id="layout-wrapper">
+
+    <header id="page-topbar">
+        <div class="navbar-header">
+            <div class="d-flex">
+                <!-- LOGO -->
+                <div class="navbar-brand-box">
+                    <a href="index.html" class="logo logo-dark">
+                                <span class="logo-sm">
+                                    <img src="/assets/product/images/logo.svg" alt="" height="22">
+                                </span>
+                        <span class="logo-lg">
+                                    <img src="/assets/product/images/logo-dark.png" alt="" height="17">
+                                </span>
+                    </a>
+
+                    <a href="index.html" class="logo logo-light">
+                                <span class="logo-sm">
+                                    <img src="/assets/product/images/logo-light.svg" alt="" height="22">
+                                </span>
+                        <span class="logo-lg">
+                                    <img src="/assets/product/images/logo-light.png" alt="" height="19">
+                                </span>
+                    </a>
+                </div>
+
+                <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect"
+                        id="vertical-menu-btn">
+                    <i class="fa fa-fw fa-bars"></i>
+                </button>
+
+                <!-- App Search-->
+                <form class="app-search d-none d-lg-block">
+                    <div class="position-relative">
+                        <input type="text" class="form-control" placeholder="Search...">
+                        <span class="bx bx-search-alt"></span>
+                    </div>
+                </form>
+
+
+            </div>
+
+            <div class="d-flex">
+
+                <div class="dropdown d-inline-block d-lg-none ml-2">
+                    <button type="button" class="btn header-item noti-icon waves-effect"
+                            id="page-header-search-dropdown" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                        <i class="mdi mdi-magnify"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-0"
+                         aria-labelledby="page-header-search-dropdown">
+
+                        <form class="p-3">
+                            <div class="form-group m-0">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search ..."
+                                           aria-label="Recipient's username">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+                <div class="dropdown d-inline-block">
+                    <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img class="rounded-circle header-profile-user" src="/assets/product/images/users/avatar-1.jpg"
+                             alt="Header Avatar">
+                        <span th:text="${userName}" style="color: #ff9900">
+                        <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+                        </span>
+                    </button>
+
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item" href="contacts-profile.html"><i
+                                class="bx bx-user font-size-16 align-middle mr-1"></i> Profile</a>
+
+                        <a href="javascript:void(0);" class="dropdown-item d-block" href="#"><span
+                                class="badge badge-success float-right">11</span><i
+                                class="bx bx-wrench font-size-16 align-middle mr-1"></i> Settings</a>
+
+                        <div class="dropdown-divider"></div>
+                        <a href="/logout" class="dropdown-item text-danger" href="#"><i
+                                class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i> Logout</a>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== Left Sidebar Start ========== -->
+
+    <th:block th:replace="/layout/left-sidebar-product :: left-sidebar-product"/>
+
+    <!-- Left Sidebar End -->
+
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="main-content">
+
+        <div class="page-content">
+            <div class="container-fluid">
+
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box d-flex align-items-center justify-content-between">
+                            <h4 class="mb-0 font-size-18">Product</h4>
+
+                            <div class="btn text-center create-modal">
+                                <button type="button" class="btn btn-primary waves-effect waves-light mt-2 mr-1">
+                                    <i class="bx bx-cart mr-2"></i> Add to cart
+                                </button>
+
+                            </div>
+
+                            <div class="text-center">
+                                <button id="btnShowCart" type="button"
+                                        class="btn btn-primary waves-effect waves-light mt-2 mr-1">
+                                    <i class="bx bx-cart mr-2"></i> Add New Product
+                                </button>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+                <div id="cart_item" class="card-item hide">
+
+                    <div class="col-lg-12">
+
+
+                        <div class="row">
+                            <div class="col-xl-3 col-sm-3">
+                                <div class="card mb-3" style="max-width: 400px;">
+                                    <div class="card-body row g-0">
+                                        <div class="product-img position-relative">
+
+                                            <img src="/assets/product/images/product/img-1.png" alt=""
+                                                 class="img-fluid mx-auto d-block">
+                                        </div>
+                                        <div class="mt-4 text-center">
+                                            <h5 class="mb-3 text-truncate"><a href="#" class="text-dark">Half sleeve
+                                                T-shirt </a></h5>
+
+                                            <h5 class="my-0"><span class="text-muted mr-2"></span> <b>$450</b></h5>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="col-lg-12">
+                                    <button type="button" id="btnCreateOrder" class="btn btn-success">
+                                        Create order
+                                    </button>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <!-- end row -->
+
+
+                    </div>
+                    <!-- end row -->
+
+                </div> <!-- container-fluid -->
+            </div>
+            <!-- End Page-content -->
+
+
+        </div>
+        <!-- end main content-->
+
+    </div>
+</div>
+<!-- END layout-wrapper -->
+
+
+<!-- /Right-bar -->
+
+<!-- Right bar overlay-->
+<div class="rightbar-overlay"></div>
+
+
+<th:block th:replace="/layout/script :: script"/>
+<script src="/assets/product/js/app.page.js"></script>
+
+<script>
+    let page = {
+        urls: {
+            getAllCategories: AppPage.BASE_URL_CATEGORY,
+            getAllProducts: AppPage.BASE_URL_PRODUCT,
+            getProductById: AppPage.BASE_URL_PRODUCT + '/edit/',
+            addProductToCard: AppPage.BASE_URL_PRODUCT + '/add-cart/',
+            getAllCartItems: AppPage.BASE_URL_CART,
+            createProduct: AppPage.BASE_URL_PRODUCT + '/create',
+            createOrder: AppPage.BASE_URL_CART + '/create-order',
+            saveNew: AppPage.BASE_URL_PRODUCT,
+            saveEdit: AppPage.BASE_URL_PRODUCT + '/edit/',
+        },
+        elements: {},
+        loadData: {},
+        commands: {},
+        dialogs: {
+            elements: {},
+            loadData: {},
+            commands: {},
+            close: {},
+            alertDanger: {},
+            inputError: {}
+        }
+    }
+
+    page.elements.logout = $(".profile-dropdown a.logout");
+    page.elements.loading = true;
+    page.elements.loader = $(".loader");
+    page.elements.currentRow = $("#currentRow");
+    page.elements.tempCustomer = $("#tempCustomer");
+    page.elements.footer = $(".footer");
+    page.elements.tempFooter = $("#tempFooter");
+    page.elements.footerButton = $(".footer button");
+    page.elements.frmListCustomer = $("#tbListCustomers tbody");
+    page.elements.btnShowCreateForm = $("a.create-modal");
+
+
+    page.dialogs.elements.fullName = $("#fullName");
+    page.dialogs.elements.email = $("#email");
+    page.dialogs.elements.phone = $("#phone");
+    page.dialogs.elements.province = $("#province");
+    page.dialogs.elements.district = $("#district");
+    page.dialogs.elements.ward = $("#ward");
+    page.dialogs.elements.address = $("#address");
+    page.dialogs.elements.btnCreateCustomer = $("#btnCreateCustomer");
+
+
+    page.dialogs.elements.wrapper = $("section .wrapper");
+    page.dialogs.elements.productName = $("#productName");
+    page.dialogs.elements.description = $("#description");
+    page.dialogs.elements.imageFile = $("#imageFile");
+    page.dialogs.elements.wrapperContent = $("section .wrapper .content");
+    page.dialogs.elements.imagePreview = $("section .image-preview canvas");
+    page.dialogs.elements.canvas = $("#canvas");
+    page.dialogs.elements.context = page.dialogs.elements.canvas[0].getContext('2d');
+    page.dialogs.elements.imagePreview.css("display", "none");
+    page.dialogs.elements.divImagePreview = $("div.image-preview, div.file-name");
+    page.dialogs.elements.btnClearImagePreview = $(".clear-image-preview i");
+
+
+    page.elements.productItems = $("#product_items");
+
+
+    let product = new Product();
+    let customer = new Customer();
+
+    page.commands.addRow = () => {
+        // page.elements.frmListCustomer.prepend($(tempCustomer(customer.id, customer.fullName, customer.email, customer.phone, customer.balance, locationRegion.provinceName, locationRegion.districtName, locationRegion.wardName, locationRegion.address)));
+    }
+
+    page.commands.formatNumber = () => {
+
+        $("table tr td").on("click", function () {
+            $("table tr td").find(".select-tab.selected").removeClass("selected").addClass("unselected");
+            $(this).parent().find(".select-tab").removeClass("unselected").addClass("selected");
+            page.elements.currentRow.val($("table tr td").find(".select-tab.selected").closest("tr").attr("id"));
+            customer.id = page.elements.currentRow.val().replace("tr_", "");
+
+            page.elements.footer.html(tempFooter());
+        });
+
+        $(document).on('input', '.num-space', function (e) {
+            $(this).val(AppPage.formatNumberSpace($(this).val()));
+        });
+
+        $('input.num-space').on("keypress", function (e) {
+
+            let charCode = (e.which) ? e.which : e.keyCode
+
+            if (String.fromCharCode(charCode).match(/[^0-9]/g))
+                return false;
+        });
+    }
+
+    page.loadData.getAllCategories = () => {
+        $.ajax({
+            type: "GET",
+            url: page.urls.getAllCategories,
+        }).done((data) => {
+
+            $("#category").empty();
+
+            $.each(data, (index, item) => {
+                let str = `<option value="${item.id}">${item.title}</option>`;
+
+                $("#category").append(str);
+            });
+
+        }).fail(function () {
+            AppPage.SweetAlert.showErrorAlert(AppPage.AlertMessageEn.ERROR_404);
+        }).always(function () {
+            page.elements.loader.addClass("hide");
+            page.elements.loading = false;
+        });
+    }
+
+    page.loadData.getAllProducts = () => {
+        // page.elements.loader.removeClass("hide");
+
+        return $.ajax({
+            type: "GET",
+            url: page.urls.getAllProducts,
+        }).done((data) => {
+
+            $.each(data, (index, item) => {
+                product = item;
+                product.price = AppPage.formatNumberSpace(product.price);
+                // product.avatar = "no-product-150x150.png";
+                // page.commands.addRow();
+                let str = AppPage.drawProducts(item);
+                page.elements.productItems.append(str);
+            });
+
+            page.commands.formatNumber();
+
+        }).fail(function () {
+            AppPage.SweetAlert.showErrorAlert(AppPage.AlertMessageEn.ERROR_404);
+        }).always(function () {
+            page.elements.loader.addClass("hide");
+            page.elements.loading = false;
+        });
+    }
+
+    function addProductToCard(productId) {
+
+        product = new Product();
+        product.id = productId;
+
+        $.ajax({
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            type: "POST",
+            url: page.urls.addProductToCard,
+            data: JSON.stringify(product)
+        }).done((data) => {
+
+            $("#cart_item .cart-items").empty();
+
+            $.each(data, (i, item) => {
+                product = item;
+
+                let str = AppPage.drawCartItems(product);
+                $("#cart_item .cart-items").append(str);
+            })
+
+            AppPage.Notify.showSuccessAlert("Thêm sản phẩm vào giỏ hàng thành công");
+
+        }).fail(function () {
+            AppPage.SweetAlert.showErrorAlert(AppPage.AlertMessageEn.ERROR_404);
+        }).always(function () {
+            page.elements.loader.addClass("hide");
+            page.elements.loading = false;
+        });
+    }
+
+    function getAllCartItems() {
+        $("#cart_item .cart-items").empty();
+
+        $.ajax({
+            type: "GET",
+            url: page.urls.getAllCartItems,
+        }).done((data) => {
+
+            $.each(data, (i, item) => {
+                let str = AppPage.drawCartItems(item);
+                $("#cart_item .cart-items").append(str);
+            })
+
+        }).fail(function () {
+            AppPage.SweetAlert.showErrorAlert(AppPage.AlertMessageEn.ERROR_404);
+        }).always(function () {
+            page.elements.loader.addClass("hide");
+            page.elements.loading = false;
+        });
+    }
+
+    page.dialogs.commands.loadImageToCanvas = (imageFile) => {
+        page.dialogs.elements.imagePreview.css("display", "");
+        page.dialogs.elements.wrapper.addClass("active");
+        page.dialogs.elements.wrapperContent.css("opacity", 0);
+
+        let imageObj = new Image();
+
+        imageObj.onload = function () {
+            page.dialogs.elements.context.canvas.width = imageObj.width;
+            page.dialogs.elements.context.canvas.height = imageObj.height;
+            page.dialogs.elements.context.drawImage(imageObj, 0, 0, imageObj.width, imageObj.height);
+        };
+
+        imageObj.src = URL.createObjectURL(imageFile)
+    }
+
+    page.dialogs.commands.changeImagePreview = () => {
+        let imageFile = page.dialogs.elements.imageFile[0].files[0];
+
+        if (imageFile) {
+            let reader = new FileReader();
+
+            reader.readAsDataURL(imageFile);
+
+            reader.onload = function (e) {
+                if (e.target.readyState === FileReader.DONE) {
+                    page.dialogs.commands.loadImageToCanvas(imageFile);
+                }
+            }
+        } else {
+            page.dialogs.elements.clearImagePreview();
+        }
+    }
+
+    page.dialogs.elements.clearImagePreview = () => {
+        page.dialogs.elements.imageFile.val("");
+        page.dialogs.elements.imagePreview.css("display", "none");
+        page.dialogs.elements.wrapper.removeClass("active");
+        page.dialogs.elements.wrapperContent.css("opacity", 1);
+    }
+
+
+    page.initializeControlEvent = () => {
+
+        $("a.nav-user").on("click", function (event) {
+            event.stopPropagation();
+            $(".profile-dropdown").slideToggle(250);
+        });
+
+        $(document).on("click", function () {
+            $(".profile-dropdown").hide();
+        });
+
+        $(".create-modal").on('click', () => {
+            $("#modalCreateProduct").modal('show');
+        })
+
+        page.elements.footer.on("click", "button", function () {
+            page.elements.footer.empty();
+        });
+
+        $("#btnShowCart").on("click", () => {
+            $("#cart_item").removeClass("hide").addClass("show");
+
+            getAllCartItems();
+        })
+
+        $("#product_items").on("click", ".btn-add-card", function () {
+            let productId = $(this).data("id");
+
+            addProductToCard(productId);
+        });
+
+        $("#btnCreateOrder").on('click', () => {
+            $.ajax({
+                headers: {
+                    "accept": "application/json",
+                    "content-type": "application/json"
+                },
+                type: "POST",
+                url: page.urls.createOrder,
+            }).done((data) => {
+
+                let obj = data;
+                if (obj.success) {
+                    AppPage.SweetAlert.showSuccessAlert("Tạo đơn hàng thành công");
+
+                    $("#cart_item .cart-items").empty();
+                }
+
+            }).fail(function () {
+                AppPage.SweetAlert.showErrorAlert(AppPage.AlertMessageEn.ERROR_404);
+            }).always(function () {
+                page.elements.loader.addClass("hide");
+                page.elements.loading = false;
+            });
+        })
+
+
+        page.dialogs.elements.divImagePreview.on("click", function () {
+            page.dialogs.elements.imageFile.trigger("click");
+        });
+
+        page.dialogs.elements.imageFile.on("change", function () {
+            page.dialogs.commands.changeImagePreview();
+        });
+
+        page.dialogs.elements.btnClearImagePreview.on("click", function () {
+            page.dialogs.elements.clearImagePreview();
+        });
+
+
+        $("#btnCreateProduct").on('click', () => {
+            // page.element.loader.removeClass("hide");
+            $("#btnCreateProduct").prop('disabled', true);
+
+            product.title = $("#productTitle").val().toString();
+            product.price = $("#productPrice").val();
+            product.category = $("#category").val();
+
+            let formData = new FormData();
+            formData.append("title", product.title);
+            formData.append("price", product.price);
+            formData.append("categoryId", product.category);
+            formData.append("file", $("#imageFile")[0].files[0]);
+
+            $.ajax({
+                type: "POST",
+                contentType: false,
+                cache: false,
+                processData: false,
+                url: page.urls.createProduct,
+                data: formData
+            }).done((data) => {
+
+                AppPage.SweetAlert.showSuccessAlert("Tạo sản phẩm thành công");
+
+            }).fail(function () {
+                AppPage.SweetAlert.showErrorAlert(AppPage.AlertMessageEn.ERROR_404);
+            }).always(function () {
+                page.elements.loader.addClass("hide");
+                page.elements.loading = false;
+
+                $("#btnCreateProduct").prop('disabled', false);
+            });
+        });
+
+
+        page.elements.logout.on("click", function () {
+            $.removeCookie('JWT', {path: '/', domain: location.hostname});
+        });
+    }
+
+    $(function () {
+        page.loadData.getAllProducts();
+
+        page.loadData.getAllCategories();
+
+        page.initializeControlEvent();
+    });
+</script>
+</body>
+</html>

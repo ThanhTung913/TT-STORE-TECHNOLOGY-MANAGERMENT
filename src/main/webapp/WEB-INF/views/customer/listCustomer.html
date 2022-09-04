@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+
+<head>
+    <title>List Customer</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Responsive bootstrap 4 admin template" name="description">
+    <meta content="Coderthemes" name="author">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="/assets/customer/images/favicon.ico">
+
+    <!-- Plugins css-->
+    <link href="/assets/customer/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
+
+    <!-- App css -->
+    <link href="/assets/customer/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
+    <link href="/assets/customer/css/icons.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/customer/css/app.min.css" rel="stylesheet" type="text/css" id="app-stylesheet">
+
+</head>
+
+<body>
+
+<!-- Begin page -->
+<div id="wrapper">
+
+
+    <!-- Topbar Start -->
+
+    <th:block th:replace="/layout/topbar :: topbar-customer"/>
+
+
+    <!-- end Topbar -->
+
+    <!-- ========== Left Sidebar Start ========== -->
+    <th:block th:replace="/layout/left-sidebar :: left-sidebar-customer"/>
+
+    <!-- Left Sidebar End -->
+
+    <!-- ============================================================== -->
+    <!-- Start Page Content here -->
+    <!-- ============================================================== -->
+
+    <div class="content-page">
+        <div class="content">
+
+            <!-- Start Content-->
+            <div class="container-fluid">
+
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <h4 class="page-title">Welcome !</h4>
+
+                            <div class="text-sm-right create-modal">
+                                <button type="button" id="btn-create-modal"
+                                        class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2">
+                                    <i class="mdi mdi-plus mr-1"></i> New Customers
+                                </button>
+                            </div>
+
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- end page title -->
+
+        </div>
+        <!-- end col -->
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title mb-4">List Customer</h4>
+                <div class="table-responsive">
+                    <table class="table table-centered mb-0 table-nowrap" id="tbListCustomer">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>UserName</th>
+                            <th>Password</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Province</th>
+                            <th>District</th>
+                            <th>Ward</th>
+                            <th>Address</th>
+                            <th>Role</th>
+                            <th class="tabledit-toolbar-column">Action</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+
+                        </tbody>
+                    </table>
+
+                </div>
+                <!-- end .table-responsive-->
+            </div>
+            <!-- end card-body -->
+        </div>
+
+
+    </div>
+    <!-- End row -->
+
+</div>
+<!-- end container-fluid -->
+
+</div>
+<!-- end content -->
+
+
+<!-- Footer Start -->
+<footer class="footer">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- end Footer -->
+
+</div>
+
+<!-- ============================================================== -->
+<!-- End Page content -->
+<!-- ============================================================== -->
+
+</div>
+<!-- END wrapper -->
+
+
+<!-- Right Sidebar -->
+<div class="right-bar">
+    <div class="rightbar-title">
+        <a href="javascript:void(0);" class="right-bar-toggle float-right">
+            <i class="mdi mdi-close"></i>
+        </a>
+        <h4 class="font-17 m-0 text-white">Theme Customizer</h4>
+    </div>
+    <div class="slimscroll-menu">
+
+        <div class="p-4">
+            <div class="alert alert-warning" role="alert">
+                <strong>Customize </strong> the overall color scheme, layout, etc.
+            </div>
+            <div class="mb-2">
+                <img src="/assets/customer/images/layouts/light.png" class="img-fluid img-thumbnail" alt="">
+            </div>
+            <div class="custom-control custom-switch mb-3">
+                <input type="checkbox" class="custom-control-input theme-choice" id="light-mode-switch" checked="">
+                <label class="custom-control-label" for="light-mode-switch">Light Mode</label>
+            </div>
+
+            <div class="mb-2">
+                <img src="/assets/customer/images/layouts/dark.png" class="img-fluid img-thumbnail" alt="">
+            </div>
+            <div class="custom-control custom-switch mb-3">
+                <input type="checkbox" class="custom-control-input theme-choice" id="dark-mode-switch"
+                       data-bsstyle="assets/css/bootstrap-dark.min.css" data-appstyle="assets/css/app-dark.min.css">
+                <label class="custom-control-label" for="dark-mode-switch">Dark Mode</label>
+            </div>
+
+            <div class="mb-2">
+                <img src="/assets/customer/images/layouts/rtl.png" class="img-fluid img-thumbnail" alt="">
+            </div>
+            <div class="custom-control custom-switch mb-5">
+                <input type="checkbox" class="custom-control-input theme-choice" id="rtl-mode-switch"
+                       data-appstyle="assets/css/app-rtl.min.css">
+                <label class="custom-control-label" for="rtl-mode-switch">RTL Mode</label>
+            </div>
+
+        </div>
+    </div> <!-- end slimscroll-menu-->
+</div>
+<!-- /Right-bar -->
+
+<!-- Right bar overlay-->
+<div class="rightbar-overlay"></div>
+<th:block th:include="/layout/script :: script"/>
+
+<th:block th:replace="/customer/temp_row_Customer :: temp_row_Customer"/>
+
+<th:block th:replace="/customer/footer :: footer"/>
+
+<th:block th:insert="/customer/modal_create :: modal_create"/>
+
+<th:block th:insert="/customer/modal_update :: modal_update"/>
+
+<script>
+    let page = {
+        urls: {
+            getAllCustomer: App.BASE_URL_CUSTOMER,
+            createCustomer: App.BASE_URL_NEW_CUSTOMER,
+            updateCustomer: App.BASE_URL_CUSTOMER + "/update",
+            deleteCustomer: App.BASE_URL_CUSTOMER + "/delete",
+            search: App.BASE_URL_CUSTOMER + "/search"
+        },
+        element: {},
+        commands: {},
+    }
+
+    let customer = new Customer();
+    let customerId = null;
+    let locationRegion = new LocationRegion();
+
+    let tempRowCustomer = $.validator.format($.trim($('#tempRowCustomer').val().toString()));
+
+    function addRowCustomer() {
+        $('#tbListCustomer tbody').prepend($(tempRowCustomer(customer.id, customer.fullName, customer.username, customer.password, customer.email, customer.phone, locationRegion.provinceName, locationRegion.districtName, locationRegion.wardName, locationRegion.address)));
+    }
+
+    function replaceRowCustomer() {
+        $('#tr_' + customer.id).replaceWith($(tempRowCustomer(customer.id, customer.fullName, customer.username, customer.password, customer.email, customer.phone, locationRegion.provinceName, locationRegion.districtName, locationRegion.wardName, locationRegion.address)));
+    }
+
+    function handleShowCreateModal() {
+        $('#btn-create-modal').on('click', function () {
+            console.log("Vao day chua?")
+            $('#modalCreateCustomer').modal('show');
+        })
+    }
+
+    function drawProvinces() {
+        return $.ajax({
+            "headers": {
+                "accept": " application/json",
+                "content-type": "application/json"
+            },
+            "type": "GET",
+            "url": "https://vapi.vnappmob.com/api/province/"
+        })
+            .done((data) => {
+                $.each(data.results, (i, item) => {
+                    let str = `<option value="${item.province_id}">${item.province_name}</option>`;
+                    $('#province').prepend(str);
+                    $('#provinceUp').prepend(str);
+                })
+            })
+            .fail((jqXHR) => {
+                App.IziToast.showErrorAlert("Không thể tải danh sách tỉnh thành phố")
+            })
+
+    }
+
+    function drawDistricts(provinceId) {
+        return $.ajax({
+            "headers": {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            "type": "GET",
+            "url": "https://vapi.vnappmob.com/api/province/district/" + provinceId,
+        })
+            .done((data) => {
+                $('#district').html('');
+                $('#districtUp').html('');
+
+                if (data.results.length === 0) {
+                    App.IziToast.showErrorAlert('Không thể tải danh sách Quận - Phường - Huyện');
+                } else {
+                    $.each(data.results, (i, item) => {
+                        let str = `<option value="${item.district_id}">${item.district_name}</option>`;
+
+                        $('#district').prepend(str);
+                        $('#districtUp').prepend(str);
+                    })
+                }
+            });
+    }
+
+    function drawWards(districtId) {
+        return $.ajax({
+            "headers": {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            "type": "GET",
+            "url": "https://vapi.vnappmob.com/api/province/ward/" + districtId,
+        })
+            .done((data) => {
+                $('#ward').html('');
+                $('#wardUp').html('');
+
+                if (data.results.length === 0) {
+                    App.IziToast.showErrorAlert('Không thể tải danh sách xã - thị trấn');
+                } else {
+                    $.each(data.results, (i, item) => {
+                        let str = `<option value="${item.ward_id}">${item.ward_name}</option>`;
+
+                        $('#ward').prepend(str);
+                        $('#wardUp').prepend(str);
+                    })
+                }
+            });
+    }
+
+    drawProvinces().then(() => {
+        let provinceId = $('#province').val();
+        drawDistricts(provinceId).then(() => {
+            let districtId = $('#district').val();
+            drawWards(districtId);
+        })
+    });
+
+    function handleShowFooter() {
+        $("#tbListCustomer tbody tr").on('click', function () {
+
+            customerId = $(this).attr('id').replace('tr_', '');
+
+            let tempFooter = $.validator.format($.trim($('#tempFooter').val().toString()));
+
+            $('.footer').html(tempFooter);
+
+            handleShowUpdate();
+            handleShowDelete();
+        });
+    }
+
+    function unbindAll() {
+        $("#tbListCustomer tbody tr").off();
+    }
+
+
+    $(() => {
+        handleShowCreateModal();
+    })
+
+    $("#province").on('change', () => {
+        let provinceId = $('#province').val();
+
+        drawDistricts(provinceId).then(() => {
+            let districtId = $('#district').val();
+            drawWards(districtId);
+        });
+    });
+
+    $("#provinceUp").on('change', () => {
+        let provinceId = $('#provinceUp').val();
+
+        drawDistricts(provinceId).then(() => {
+            let districtId = $('#districtUp').val();
+            drawWards(districtId);
+        });
+    });
+
+
+    $("#district").on('change', () => {
+        let districtId = $('#district').val();
+        drawWards(districtId);
+    });
+
+    $("#districtUp").on('change', () => {
+        let districtId = $("#districtUp").val();
+        drawWards(districtId);
+    })
+
+    $("#btnCreateCustomer").on('click', () => {
+        locationRegion.provinceId = $("#province").val();
+        locationRegion.provinceName = $("#province :selected").text();
+        locationRegion.districtId = $("#district").val();
+        locationRegion.districtName = $("#district :selected").text();
+        locationRegion.wardId = $("#ward").val();
+        locationRegion.wardName = $("#ward :selected").text();
+        locationRegion.address = $("#address").val();
+
+        role.id = $("#role").val();
+        role.name = $("#role :selected").text();
+
+        customer.fullName = $("#fullName").val();
+        customer.username = $("#userName").val();
+        customer.password = $("#password").val();
+        customer.email = $("#email").val();
+        customer.phone = $("#phone").val();
+        customer.role = role;
+        customer.locationRegion = locationRegion;
+
+        $.ajax({
+            "headers": {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            "type": "POST",
+            "url": "http://localhost:8080/api/customers/create",
+            "data": JSON.stringify(customer)
+        })
+            .done((data) => {
+                console.log(data);
+                customer = data;
+                role = customer.role;
+                locationRegion = customer.locationRegion;
+
+                addRowCustomer();
+
+                $('#modalCreateCustomer').modal('hide');
+
+                App.SweetAlert.showSuccessAlert('Create customer success');
+
+                unbindAll();
+
+                handleShowFooter();
+                handleShowDelete()
+            })
+            .fail((jqXHR) => {
+                $(' .modal-alert-danger').html('').removeClass('hide').addClass('show');
+                console.log(jqXHR)
+                if (jqXHR.responseJSON.message) {
+                    let msg = jqXHR.responseJSON.message;
+
+                    let str = `<label id="message-error" class="error" for="message">${msg}</label>`;
+
+                    $('#modalCreateCustomer .modal-alert-danger').append(str);
+                } else if (jqXHR.responseJSON) {
+                    $.each(jqXHR.responseJSON, (key, item) => {
+                        let str = `<label id="${key}-error" class="error" for="${key}">${item}</label>`;
+                        $("#" + key).addClass("error");
+
+                        $('#modalCreateCustomer .modal-alert-danger').append(str);
+                    })
+                }
+            })
+    })
+
+    $('#btnUpdateCustomer').on('click', () => {
+        locationRegion.provinceId = $('#provinceUp').val();
+        locationRegion.provinceName = $('#provinceUp :selected').text();
+        locationRegion.districtId = $('#districtUp').val();
+        locationRegion.districtName = $('#districtUp :selected').text();
+        locationRegion.wardId = $('#wardUp').val();
+        locationRegion.wardName = $('#wardUp :selected').text();
+        locationRegion.address = $('#addressUp').val();
+
+        role.id = $("#role").val();
+        role.name = $("#role :selected").text();
+
+        customer.id = $("#id_customerUp").val();
+        customer.fullName = $("#fullNameUp").val();
+        customer.username = $("#userNameUp").val();
+        customer.password = $("#passwordUp").val();
+        customer.email = $("#emailUp").val();
+        customer.phone = $("#phoneUp").val();
+        customer.role = role;
+        customer.locationRegion = locationRegion;
+
+        $.ajax({
+            "headers": {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            "type": "PUT",
+            "url": "http://localhost:8080/api/customers/update",
+            "data": JSON.stringify(customer)
+        })
+            .done((data) => {
+                customer = data;
+                role = customer.role;
+                locationRegion = customer.locationRegion;
+
+                replaceRowCustomer();
+
+                $('#modalUpdateCustomer').modal('hide');
+
+                App.SweetAlert.showSuccessAlert('Update customer success');
+
+                unbindAll();
+                handleShowFooter();
+
+            })
+            .fail((jqXHR) => {
+                console.log(jqXHR);
+                $('#modalUpdateCustomer .modal-alert-danger').html('').removeClass('hide').addClass('show');
+
+                if (jqXHR.status === 401) {
+                    let msg = "Please login !!";
+
+                    let str = `<label id="message-error" class="error" for="message">${msg}</label>`;
+
+                    $('#modalUpdateCustomer .modal-alert-danger').append(str);
+                } else {
+                    if (jqXHR.status === 403) {
+                        let msg = "Bạn không được admin cấp quyền này!!";
+
+                        let str = `<label id="message-error" class="error" for="message">${msg}</label>`;
+
+                        $('#modalUpdateCustomer .modal-alert-danger').append(str);
+                    } else {
+                        if (jqXHR.responseJSON.message) {
+                            let msg = jqXHR.responseJSON.message;
+
+                            let str = `<label id="message-error" class="error" for="message">${msg}</label>`;
+
+                            $('#modalUpdateCustomer .modal-alert-danger').append(str);
+                        } else if (jqXHR.responseJSON) {
+                            $.each(jqXHR.responseJSON, (key, item) => {
+                                let str = `<label id="${key}-error" class="error" for="${key}">${item}</label>`;
+                                $("#" + key).addClass("error");
+
+                                $('#modalUpdateCustomer .modal-alert-danger').append(str);
+                            })
+                        }
+                    }
+                }
+
+
+            })
+    });
+
+    function handleShowUpdate() {
+        $('button.edit').on('click', () => {
+
+            $.ajax({
+                headers: {
+                    "accept": "application/json",
+                    "content-type": "application/json"
+                },
+                type: "GET",
+                url: "http://localhost:8080/api/customers/" + customerId
+            })
+                .done((data) => {
+                    customer = data;
+                    console.log(customer)
+                    role = customer.role
+                    locationRegion = customer.locationRegion;
+
+                    role.id = $("#role").val();
+                    role.name = $("#role :selected").text();
+
+                    $('#fullNameUp').val(customer.fullName);
+                    $('#userNameUp').val(customer.username);
+                    $('#passwordUp').val(customer.password);
+
+                    $('#roleUp').val(role.id);
+                    $('#roleUp :selected').val(role.name);
+                    $("#id_customerUp").val(customer.id)
+                    $('#emailUp').val(customer.email);
+                    $('#phoneUp').val(customer.phone);
+                    $('#provinceUp').val(locationRegion.provinceId);
+
+                    drawDistricts(locationRegion.provinceId).then(() => {
+                        $('#districtUp').val(locationRegion.districtId);
+
+                        drawWards(locationRegion.districtId).then(() => {
+                            $('#wardUp').val(locationRegion.wardId);
+                        });
+                    });
+
+                    $('#addressUp').val(locationRegion.address);
+
+                    $('#modalUpdateCustomer').modal('show');
+                })
+                .fail((jqXHR) => {
+                    App.SweetAlert.showErrorAlert(jqXHR.responseJSON.message);
+                    console.log(jqXHR);
+                })
+        });
+    }
+
+    function handleShowDelete() {
+        $("button.suspended").on('click', () => {
+            console.log(customerId)
+
+            App.SweetAlert.showConfirmDelete()
+                .then((result) => {
+                    console.log(result)
+                    if (result.value) {
+
+                        $.ajax({
+                            "type": "DELETE",
+                            "headers": {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                            },
+                            "url": page.urls.deleteCustomer + "/" + customerId
+
+                        }).done((data) => {
+                            console.log(data)
+                            App.SweetAlert.showSuccessAlert("Suspended failed success");
+                            $("#tr_" + customerId).remove();
+
+                        }).fail(() => {
+                            App.SweetAlert.showErrorAlert("Suspended failed");
+                        });
+                    }
+                })
+        })
+    }
+
+    function getAllCustomer() {
+        return $.ajax({
+            "headers": {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            "type": "GET",
+            "url": "http://localhost:8080/api/customers"
+        })
+            .done((data) => {
+                console.log("Vao chua")
+                $('#tbListCustomers tbody').html('');
+
+                $.each(data, (i, item) => {
+                    customer = item;
+                    role = customer.role;
+                    locationRegion = customer.locationRegion;
+
+                    addRowCustomer();
+                });
+
+                handleShowFooter();
+            })
+            .fail((jqXHR) => {
+                console.log(jqXHR);
+            })
+    }
+
+
+    getAllCustomer().then(function () {
+        handleShowCreateModal();
+    });
+
+</script>
+</body>
+
+</html>
