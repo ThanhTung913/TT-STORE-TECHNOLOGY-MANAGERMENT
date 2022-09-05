@@ -14,8 +14,6 @@ public class ProductController {
     public ModelAndView showListPage() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("product/listProduct");
-
-
         return modelAndView;
     }
 }
